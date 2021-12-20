@@ -70,30 +70,49 @@
 
 @*Customer entry*@
 <h1>Please enter your details below</h1>
-<fieldset>
-    <div class="row mb-2">
-        <label class="col-2" for="name">
-            Name:
-        </label>
-        <input class="col-6" id="name" @bind="State.Basket.Customer.Name" />
-    </div>
-    <div class="row mb-2">
-        <label class="col-2" for="street">
-            Street:
-        </label>
-        <input class="col-6" id="street" @bind="State.Basket.Customer.Street" />
-    </div>
-    <div class="row mb-2">
-        <label class="col-2" for="city">
-            City:
-        </label>
-        <input class="col-6" id="city" @bind="State.Basket.Customer.City" />
-    </div>
-    <button @onclick=PlaceOrder class="btn btn-success">
-        Checkout
-    </button>
-</fieldset>
+<EditForm Model="@State.Basket.Customer" OnValidSubmit="PlaceOrder">
+    <DataAnnotationsValidator />
+    <fieldset>
+        <div class="row mb-2">
+            <label class="col-2" for="name">
+                Name:
+            </label>
+            <InputText class="col-6" id="name" @bind-Value="@State.Basket.Customer.Name" />
+        </div>
+        <div class="row mb-2">
+            <div class="col-6 offset-2">
+                <ValidationMessage For="@(() => State.Basket.Customer.Name)" />
+            </div>
+        </div>
+        <div class="row mb-2">
+            <label class="col-2" for="street">
+                Street:
+            </label>
+            <InputText class="col-6" id="street" @bind-Value="@State.Basket.Customer.Street" />
+        </div>
+        <div class="row mb-2">
+            <div class="col-6 offset-2">
+                <ValidationMessage For="@(() => State.Basket.Customer.Street)" />
+            </div>
+        </div>
+        <div class="row mb-2">
+            <label class="col-2" for="city">
+                City:
+            </label>
+            <InputText class="col-6" id="city" @bind-Value="State.Basket.Customer.City" />
+        </div>
+        <div class="row mb-2">
+            <div class="col-6 offset-2">
+                <ValidationMessage For="@(() => State.Basket.Customer.City)" />
+            </div>
+        </div>
+        <button @onclick=PlaceOrder class="btn btn-success">
+            Checkout
+        </button>
+    </fieldset>
+</EditForm>
 @*End Customer entry*@
+
 @State.ToJson();
 @code {
     private State State { get; } = new State();
