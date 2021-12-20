@@ -94,6 +94,7 @@
     </button>
 </fieldset>
 @*End Customer entry*@
+@State.ToJson();
 @code {
     private State State { get; } = new State();
     protected override void OnInitialized()
