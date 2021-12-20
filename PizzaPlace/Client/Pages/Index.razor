@@ -66,7 +66,34 @@
         <div class="col"> </div>
     </div>
 }
+@*End Shopping Basket*@
 
+@*Customer entry*@
+<h1>Please enter your details below</h1>
+<fieldset>
+    <div class="row mb-2">
+        <label class="col-2" for="name">
+            Name:
+        </label>
+        <input class="col-6" id="name" @bind="State.Basket.Customer.Name" />
+    </div>
+    <div class="row mb-2">
+        <label class="col-2" for="street">
+            Street:
+        </label>
+        <input class="col-6" id="street" @bind="State.Basket.Customer.Street" />
+    </div>
+    <div class="row mb-2">
+        <label class="col-2" for="city">
+            City:
+        </label>
+        <input class="col-6" id="city" @bind="State.Basket.Customer.City" />
+    </div>
+    <button @onclick=PlaceOrder class="btn btn-success">
+        Checkout
+    </button>
+</fieldset>
+@*End Customer entry*@
 @code {
     private State State { get; } = new State();
     protected override void OnInitialized()
@@ -81,4 +108,6 @@
     protected void AddToBasket(Pizza pizza) => this.State.Basket.Add(pizza.Id);
 
     protected void RemoveFromBasket(int pos) => State.Basket.RemoveAt(pos);
+
+    private void PlaceOrder() => Console.WriteLine("placing order");
 }
