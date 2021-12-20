@@ -1,0 +1,84 @@
+﻿@page "/"
+
+
+<PageTitle>Index</PageTitle>
+
+@*Menu*@
+
+<h1>Our selection of pizzas</h1>
+
+@foreach (var pizza in State.Menu.Pizzas)
+{
+    <div class="row p-4">
+        <div class="col">
+            @pizza.Name
+        </div>
+        <div class="col">
+            @($"{pizza.Price:0.00}")
+        </div>
+        <div class="col"></div>
+        <div class="col">
+            <img src="@SpicinessImage(pizza.Spiciness)" alt=@pizza.Spiciness height="32" width="32" />
+        </div>
+        <div class="col">
+            <button class="btn btn-success pl-4 pr-4" @onclick=@(()=>AddToBasket(pizza))>
+                Add
+            </button>
+        </div>
+    </div>
+}
+@*End Menu*@
+
+@*Shopping Basket*@
+@if (State.Basket.Orders.Any())
+{
+    <h1 class="">Your current order</h1>
+    @foreach (var (pizza, pos) in State.Basket.Orders.Select((id, pos) => (State.Menu.GetPizza(id), pos)))
+    {
+        <div class="row mb-2">
+            <div class="col">
+                @pizza.Name
+            </div>
+            <div class="col text-right">
+                @($"{pizza.Price:0.00}")
+            </div>
+            <div class="col">@($" + Taxes ({(pizza.Price * 1.15M):0.00})")</div>
+            <div class="col"></div>
+            <div class="col">
+                <button class="btn btn-danger"
+                @onclick="@(() => RemoveFromBasket(pos))">
+                    Remove
+                </button>
+            </div>
+        </div>
+    }
+    <div class="row">
+        <div class="col"></div>
+        <div class="col"><hr /></div>
+        <div class="col"> </div>
+        <div class="col"> </div>
+    </div>
+    <div class="row">
+        <div class="col"> Total:</div>
+        <div class="col text-right font-weight-bold"> @($"{(State.TotalPrice * 1.15M):0.00}") </div>
+        <div class="col"> </div>
+        <div class="col"> </div>
+        <div class="col"> </div>
+    </div>
+}
+
+@code {
+    private State State { get; } = new State();
+    protected override void OnInitialized()
+    {
+        State.Menu.AddPizza(new Pizza(1, "Pepperoni", 8.99M, Spiciness.Spicy));
+        State.Menu.AddPizza(new Pizza(2, "Margarita", 7.99M, Spiciness.None));
+        State.Menu.AddPizza(new Pizza(3, "Diabolo", 9.99M, Spiciness.Hot));
+    }
+
+    protected string SpicinessImage(Spiciness spiciness) => $"images/{spiciness.ToString().ToLower()}.png";
+
+    protected void AddToBasket(Pizza pizza) => this.State.Basket.Add(pizza.Id);
+
+    protected void RemoveFromBasket(int pos) => State.Basket.RemoveAt(pos);
+}
