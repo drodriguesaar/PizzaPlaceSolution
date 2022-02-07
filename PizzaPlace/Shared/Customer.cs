@@ -12,6 +12,6 @@ namespace PizzaPlace.Shared
         [Required(ErrorMessage = "Please provide a city")]
         public string City { get; set; } = default!;
 
-
+        public ICollection<Order> Orders { get; set; } = new List<Order>();
     }
 }

@@ -1,17 +1,23 @@
-using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using PizzaPlace.Server;
+using PizzaPlace.Shared;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.WriteIndented = true;
+    options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+});
 builder.Services.AddRazorPages();
-builder.Services.AddDbContext<PizzaPlaceDbContext>(options => 
+builder.Services.AddDbContext<PizzaPlaceDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("PizzaPlaceDb"))
  );
 builder.Services.AddTransient<IPizzaBusiness, PizzaBusiness>();
+builder.Services.AddTransient<IOrderService, OrderBusiness>();
 
 var app = builder.Build();
 
