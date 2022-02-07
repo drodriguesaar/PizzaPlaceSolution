@@ -2,6 +2,7 @@
 {
     public interface IOrderService
     {
-        ValueTask PlaceOrder(ShoppingBasket basket);
+        ValueTask<Order> PlaceOrder(ShoppingBasket basket);
+        ValueTask<Order> GetOrder(int Id);
     }
 }
