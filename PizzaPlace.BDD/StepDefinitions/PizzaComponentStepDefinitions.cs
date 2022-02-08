@@ -1,8 +1,6 @@
 using Bunit;
 using PizzaPlace.Client.Pages;
 using PizzaPlace.Shared;
-using System;
-using TechTalk.SpecFlow;
 
 namespace PizzaPlace.BDD.StepDefinitions
 {
