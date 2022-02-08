@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzaPlace.Client", "PizzaP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzaPlace.Shared", "PizzaPlace\Shared\PizzaPlace.Shared.csproj", "{BDB4AE72-A9E2-4A26-A965-922B6316F58C}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzaPlace.TDD", "Testing.ComponentTests\PizzaPlace.TDD.csproj", "{2D6361A1-DDD5-426B-B18B-1B1818E5C242}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaPlace.BDD", "PizzaPlace.BDD\PizzaPlace.BDD.csproj", "{D65BCF02-D67E-4D18-B2AF-9060A928C5D2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{BDB4AE72-A9E2-4A26-A965-922B6316F58C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDB4AE72-A9E2-4A26-A965-922B6316F58C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDB4AE72-A9E2-4A26-A965-922B6316F58C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D6361A1-DDD5-426B-B18B-1B1818E5C242}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D6361A1-DDD5-426B-B18B-1B1818E5C242}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D6361A1-DDD5-426B-B18B-1B1818E5C242}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D6361A1-DDD5-426B-B18B-1B1818E5C242}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D65BCF02-D67E-4D18-B2AF-9060A928C5D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D65BCF02-D67E-4D18-B2AF-9060A928C5D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D65BCF02-D67E-4D18-B2AF-9060A928C5D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D65BCF02-D67E-4D18-B2AF-9060A928C5D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
