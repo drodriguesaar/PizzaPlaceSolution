@@ -4,10 +4,12 @@
 {
     @Header
 }
-
-@foreach (TItem item in Items)
+@if (Items is not null)
 {
-    @RowTemplate(item)
+    foreach (TItem item in Items)
+    {
+        @RowTemplate(item)
+    }
 }
 
 @if (Footer is not null)
